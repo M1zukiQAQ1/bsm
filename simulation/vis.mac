@@ -37,6 +37,37 @@
 /vis/modeling/trajectories/drawByParticleID-0/set anti_nu_e grey
 /vis/modeling/trajectories/select drawByParticleID-0
 
+# On-screen particle color legend
+/vis/set/textLayout left
+
+/vis/set/textColour white
+/vis/scene/add/text2D -0.95 0.90 18 0 0 Particle tracks
+
+/vis/set/textColour cyan
+/vis/scene/add/text2D -0.95 0.81 16 0 0 mu- : Negative muon
+
+/vis/set/textColour red
+/vis/scene/add/text2D -0.95 0.72 16 0 0 e- : Electron
+
+/vis/set/textColour blue
+/vis/scene/add/text2D -0.95 0.63 16 0 0 e+ : Positron
+
+/vis/set/textColour yellow
+/vis/scene/add/text2D -0.95 0.54 16 0 0 gamma : Photon
+
+/vis/set/textColour green
+/vis/scene/add/text2D -0.95 0.45 16 0 0 neutron : Neutron
+
+/vis/set/textColour magenta
+/vis/scene/add/text2D -0.95 0.36 16 0 0 proton : Proton
+
+/vis/set/textColour grey
+/vis/scene/add/text2D -0.95 0.27 16 0 0 nu_mu : Muon neutrino
+/vis/scene/add/text2D -0.95 0.18 16 0 0 anti_nu_e : Electron antineutrino
+
+# Restore text color
+/vis/set/textColour white
+
 # Run five events.
 /tracking/verbose 0
 /run/beamOn 10
