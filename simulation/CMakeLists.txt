@@ -7,7 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # The conda Geant4 build ships without Qt, so treat it as optional.
 find_package(Geant4 REQUIRED ui_all vis_all OPTIONAL_COMPONENTS qt)
 
-add_executable(muonB10 main.cpp DetectorConstruction.cpp MyPhysicsList.cpp PrimaryGeneratorAction.cpp)
+add_executable(muonB10 ActionInitialization.cpp main.cpp DetectorConstruction.cpp MyPhysicsList.cpp PrimaryGeneratorAction.cpp RunAction.cpp MuonMinusSteppingAction.cpp)
 
 target_compile_features(muonB10 PRIVATE cxx_std_17)
 

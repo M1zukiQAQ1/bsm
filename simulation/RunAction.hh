@@ -1,13 +1,19 @@
 
 #pragma once
 
+#include <G4Types.hh>
 #include <G4UserRunAction.hh>
 
 class RunAction : public G4UserRunAction {
 public:
   RunAction();
-  ~RunAction();
+  ~RunAction() override = default;
 
-  virtual void BeginRunAction(const G4Run *);
-  virtual void EndOfRunAction(const G4Run *);
+  void BeginOfRunAction(const G4Run *) override;
+  void EndOfRunAction(const G4Run *) override;
+
+  G4int getMuonDepthId();
+
+private:
+  G4int muonDepthId;
 };

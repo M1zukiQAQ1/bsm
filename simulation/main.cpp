@@ -11,8 +11,9 @@ int main(int argc, char **argv) {
   auto *session = new G4UIExecutive(argc, argv, "qt");
   auto *runManager = G4RunManagerFactory::CreateRunManager();
 
-  runManager->SetUserInitialization(new DetectorConstruction());
-  runManager->SetUserInitialization(new ActionInitialization());
+  auto *detector = new DetectorConstruction();
+  runManager->SetUserInitialization(detector);
+  runManager->SetUserInitialization(new ActionInitialization(detector));
   runManager->SetUserInitialization(new MyPhysicsList());
 
   // Register the available visualization systems.
