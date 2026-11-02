@@ -10,7 +10,7 @@ RunAction::RunAction() {
   muonDepthId = analysisManager->CreateH1(
       "muon_stopping_distance",
       "Muon Stopping Distance (Displacement);Distance(mm);Entries", 100,
-      0.0 * mm, 1000.0 * mm, "mm");
+      0.0 * mm, 2 * mm, "mm");
 }
 
 int RunAction::getMuonDepthId() { return muonDepthId; }

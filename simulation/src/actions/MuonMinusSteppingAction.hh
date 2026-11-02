@@ -3,6 +3,7 @@
 
 #include "G4UserSteppingAction.hh"
 #include <G4LogicalVolume.hh>
+#include <G4Step.hh>
 #include <G4Types.hh>
 
 class MuonMinusSteppingAction : public G4UserSteppingAction {
@@ -18,4 +19,7 @@ private:
   const G4LogicalVolume *fTarget;
   G4double fTargetFrontZ;
   G4int fMuonStoppingId;
+
+  void FillMuonStoppingDistance(const G4Step *step);
+  void FillElectronEnergySpectrum(const G4Step *step);
 };

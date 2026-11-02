@@ -20,7 +20,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
 
   // TODO: Supply sliced geometry
 
-  auto *pd106 = new G4Isotope("106PD", 46, 60, 105.963 * (gram / mole));
+  auto *pd106 = new G4Isotope("106PD", 46, 106, 105.963 * (gram / mole));
   auto *enrichedPalladium = new G4Element("EnrichedPalladium106", "Pd", 1);
   enrichedPalladium->AddIsotope(pd106, 100 * perCent);
   auto *targetMaterial =

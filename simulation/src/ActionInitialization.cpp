@@ -21,4 +21,6 @@ void ActionInitialization::Build() const {
                                             runAction->getMuonDepthId()));
 }
 
-void ActionInitialization::BuildForMaster() const {}
+void ActionInitialization::BuildForMaster() const {
+  SetUserAction(new RunAction);
+}

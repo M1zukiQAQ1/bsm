@@ -4,10 +4,13 @@
 #include "G4Step.hh"
 #include <CLHEP/Units/SystemOfUnits.h>
 #include <G4AnalysisManager.hh>
+#include <G4Electron.hh>
 #include <G4Positron.hh>
+#include <G4ProcessType.hh>
 #include <G4SystemOfUnits.hh>
 #include <G4TrackStatus.hh>
 #include <G4Types.hh>
+#include <G4VProcess.hh>
 
 void MuonMinusSteppingAction::UserSteppingAction(const G4Step *step) {
 
@@ -25,6 +28,22 @@ void MuonMinusSteppingAction::UserSteppingAction(const G4Step *step) {
 
   const auto *volume = pre->GetPhysicalVolume();
 
+  // For Muon Minus Decay Spectrum
+  const auto *secondaries = step->GetSecondaryInCurrentStep();
+  for (const auto *secondary : *secondaries) {
+    if (secondary->GetDefinition() != G4Electron::Definition()) {
+      return;
+    }
+
+    const auto *creator = secondary->GetCreatorProcess();
+    if (!creator || creator->GetProcessType() != fDecay) {
+      return;
+    }
+
+    // TODO: fill H1
+  }
+
+  // For Muon Stopping Distance
   // If it's not inside the Target's Volume, we don't care, return
   if (!volume || volume->GetLogicalVolume() != fTarget) {
     return;
@@ -35,8 +54,8 @@ void MuonMinusSteppingAction::UserSteppingAction(const G4Step *step) {
     return;
   }
 
-  // Exclude muon fron decay or other processes
-  if (step->GetTrack()->GetTrackStatus() == fStopButAlive) {
+  // Keep muons that are stopped
+  if (step->GetTrack()->GetTrackStatus() != fStopButAlive) {
     return;
   }
 
