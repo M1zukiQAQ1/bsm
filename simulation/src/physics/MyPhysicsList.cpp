@@ -92,4 +92,4 @@ void MyPhysicsList::ConstructProcess() {
   ConstructEM();
 }
 
-void MyPhysicsList::ConstructEM() {}
+void MyPhysicsList::ConstructEM() { emPhysics.ConstructProcess(); }

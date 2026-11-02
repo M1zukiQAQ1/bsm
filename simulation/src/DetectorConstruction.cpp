@@ -20,7 +20,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
 
   // TODO: Supply sliced geometry
 
-  auto *pd106 = new G4Isotope("106PD", 46, 60, 105.963 * (gram / mole));
+  auto *pd106 = new G4Isotope("106PD", 46, 106, 105.963 * (gram / mole));
   auto *enrichedPalladium = new G4Element("EnrichedPalladium106", "Pd", 1);
   enrichedPalladium->AddIsotope(pd106, 100 * perCent);
   auto *targetMaterial =
@@ -34,7 +34,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
 
   auto *worldLogical = new G4LogicalVolume(worldSolid, vacuum, "WorldLogical");
 
-  auto *targetLogical =
+  fTargetLogical =
       new G4LogicalVolume(targetSolid, targetMaterial, "TargetLogical");
 
   // Place the world. Its mother volume is nullptr.
@@ -44,7 +44,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
                         false, 0, true);
 
   // Place the target inside the world.
-  new G4PVPlacement(nullptr, G4ThreeVector(0, 0, 0), targetLogical, "Target",
+  new G4PVPlacement(nullptr, G4ThreeVector(0, 0, 0), fTargetLogical, "Target",
                     worldLogical, // Target's mother is the world
                     false, 0, true);
 
