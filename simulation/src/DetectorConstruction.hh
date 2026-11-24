@@ -23,5 +23,6 @@ public:
   G4LogicalVolume *GetTargetLogical() const { return fTargetLogical; }
 
 private:
-  G4LogicalVolume *fTargetLogical;
+  // Set by Construct(); null until the geometry has been built
+  G4LogicalVolume *fTargetLogical = nullptr;
 };
