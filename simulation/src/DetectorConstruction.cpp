@@ -43,8 +43,10 @@ G4VPhysicalVolume *DetectorConstruction::Construct() {
                         nullptr, // No mother: this is the world
                         false, 0, true);
 
-  // Place the target inside the world.
-  new G4PVPlacement(nullptr, G4ThreeVector(0, 0, 0), fTargetLogical, "Target",
+  // Place the target inside the world. Stopping depths are measured from
+  // frontZ, which is derived from centerZ, so place it at centerZ.
+  new G4PVPlacement(nullptr, G4ThreeVector(0, 0, centerZ), fTargetLogical,
+                    "Target",
                     worldLogical, // Target's mother is the world
                     false, 0, true);
 

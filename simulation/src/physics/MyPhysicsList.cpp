@@ -52,7 +52,7 @@ void MyPhysicsList::ConstructProcess() {
   // Basic Moving
   AddTransportation();
 
-  // Rodiaactive nuclear Decay
+  // Ridoactive nuclear Decay
   auto *radioactiveDecay = new G4RadioactiveDecay();
   ph->RegisterProcess(radioactiveDecay, G4GenericIon::GenericIon());
 

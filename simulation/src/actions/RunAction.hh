@@ -13,7 +13,9 @@ public:
   void EndOfRunAction(const G4Run *) override;
 
   G4int getMuonDepthId();
+  G4int getElectronSpectrumId();
 
 private:
   G4int muonDepthId;
+  G4int electronSpectrumId;
 };

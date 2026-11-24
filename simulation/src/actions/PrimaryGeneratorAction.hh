@@ -1,9 +1,12 @@
 
+#pragma once
+
 #include "G4MuonMinus.hh"
 #include "G4ParticleGun.hh"
+#include "G4SystemOfUnits.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
 
-const G4ThreeVector gunLocation(0, 0, -5);
+const G4ThreeVector gunLocation(0, 0, -5 * mm);
 
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction {
 public:
